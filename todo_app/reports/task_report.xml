@@ -1,0 +1,108 @@
+<odoo>
+    <record id="task_report" model="ir.actions.report">
+        <field name="name">Task Report</field>
+        <field name="model">todo.task</field>
+        <!--<field name="report_type">qweb-pdf</field>-->
+        <field name="report_type">qweb-html</field>
+        <field name="binding_model_id" ref="model_todo_task"/>
+        <field name="binding_type">report</field>
+        <field name="report_name">todo_app.task_report_template</field>
+    </record>
+
+    <template id="task_report_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="rec">
+                    <style>
+                        table {
+                            width: 100%;
+                            border-collapse: collapse;
+                        }
+                        table, th, td {
+                            border: 1px solid black;
+                        }
+                        th, td {
+                            padding: 10px;
+                            text-align: center;
+                        }
+                        th {
+                            background-color: #f2f2f2;
+                        }
+                        tr:nth-child(even) {
+                            background-color: #f9f9f9;
+                        }
+                        tr:hover {
+                            background-color: #f1f1f1;
+                        }
+                        h4{
+                            display: inline-block;
+                            width: 200px;
+                            font-weight: bold;
+                        }
+                    </style>
+                    <div>
+                        <h4>TASK:</h4>
+                        <t t-esc="rec.name"/>
+                    </div>
+                    <div>
+                        <h4>Due Date:</h4>
+                        <t t-esc="rec.due_date"/>
+                    </div>
+                    <div>
+                        <h4>Assign To:</h4>
+                        <span t-field="rec.assign_to_id"/>
+                    </div>
+                    <div>
+                        <h4>Description:</h4>
+                        <t t-esc="rec.description"/>
+                    </div>
+                    <br/>
+                    <table  id="myTable">
+                        <thead>
+                            <th colspan="4">Timesheet</th>
+                        </thead>
+                        <thead>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Time</th>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="rec.line_ids" t-as="line">
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <t t-esc="line.date"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.description"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="line.time"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                        <thead>
+                            <th colspan="3">Total Time</th>
+                            <td>
+                                <t t-set="total_time" t-value="sum(line.time for line in rec.line_ids)"/>
+                                <t t-esc="total_time"/>
+                            </td>
+                        </thead>
+                    </table>
+                    <script>
+                        function updateRowNumbers() {
+                            const rows = document.querySelectorAll("#myTable tbody tr");
+                            rows.forEach((row, index) => {
+                                row.cells[0].textContent = index + 1; // Update the first cell with the row number
+                            });
+                        }
+
+                        updateRowNumbers();
+                    </script>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
