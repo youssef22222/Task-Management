@@ -1,4 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_todo_task,access_todo_task,model_todo_task,,1,1,1,1
+access_todo_task_managers,access_todo_task,model_todo_task,todo_task_managers_group,1,1,1,1
+access_todo_task_users,access_todo_task,model_todo_task,todo_task_users_group,1,0,0,0
 access_task_line,access_task_line,model_task_line,,1,1,1,1
 access_assign_task,access_assign_task,model_assign_task,,1,1,1,1

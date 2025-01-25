@@ -9,7 +9,6 @@
                 <field name="description"/>
                 <field name="estimated_time"/>
                 <field name="assign_to_id"/>
-                <field name="active"/>
                 <field name="state"/>
                 <field name="is_late"/>
             </tree>
@@ -46,8 +45,8 @@
                         <field name="description"/>
                         <field name="estimated_time"/>
                         <field name="assign_to_id"/>
-                        <field name="active"/>
-                        <field name="is_late"/>
+                        <field name="active" invisible="1"/>
+                        <field name="is_late" invisible="1"/>
                     </group>
                     <notebook>
                      <page string="TimeSheet">
