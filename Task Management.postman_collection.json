@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "75e8a14e-684c-45c6-9887-cb9c679d2751",
+		"name": "To-Do Task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19575685",
+		"_collection_link": "https://grey-sunset-322874.postman.co/workspace/Graduation-Project~0a042d46-3c45-44b1-83f9-958147bff636/collection/19575685-75e8a14e-684c-45c6-9887-cb9c679d2751?action=share&source=collection_link&creator=19575685"
+	},
+	"item": [
+		{
+			"name": "To-Do Task",
+			"item": [
+				{
+					"name": "get_task",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://youssef-latitude-e5440:8069/v1/task/1",
+							"protocol": "http",
+							"host": [
+								"youssef-latitude-e5440"
+							],
+							"port": "8069",
+							"path": [
+								"v1",
+								"task",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_tasks_list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://youssef-latitude-e5440:8069/v1/tasks",
+							"protocol": "http",
+							"host": [
+								"youssef-latitude-e5440"
+							],
+							"port": "8069",
+							"path": [
+								"v1",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_task",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://youssef-latitude-e5440:8069/v1/task/7",
+							"protocol": "http",
+							"host": [
+								"youssef-latitude-e5440"
+							],
+							"port": "8069",
+							"path": [
+								"v1",
+								"task",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post_task",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Study Math\",\n    \"description\": \"Study chapter 1 and 4\",\n    \"due_date\": \"2025-03-25\",\n    \"state\": \"new\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://youssef-latitude-e5440:8069/v1/task",
+							"protocol": "http",
+							"host": [
+								"youssef-latitude-e5440"
+							],
+							"port": "8069",
+							"path": [
+								"v1",
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put_task",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"state\": \"new\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://youssef-latitude-e5440:8069/v1/task/1",
+							"protocol": "http",
+							"host": [
+								"youssef-latitude-e5440"
+							],
+							"port": "8069",
+							"path": [
+								"v1",
+								"task",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_tasks_list_with_filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://youssef-latitude-e5440:8069/v1/tasks/filter?state=closed",
+							"protocol": "http",
+							"host": [
+								"youssef-latitude-e5440"
+							],
+							"port": "8069",
+							"path": [
+								"v1",
+								"tasks",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "state",
+									"value": "closed"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_tasks_with_filter_and_pagination",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://youssef-latitude-e5440:8069/v1/tasks/filter/pagination?state=new&page=2&limit=3",
+							"protocol": "http",
+							"host": [
+								"youssef-latitude-e5440"
+							],
+							"port": "8069",
+							"path": [
+								"v1",
+								"tasks",
+								"filter",
+								"pagination"
+							],
+							"query": [
+								{
+									"key": "state",
+									"value": "new"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "limit",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
